@@ -136,7 +136,20 @@ namespace backend_upc_5_2023.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
+        [HttpPost]
+        [Route("ActivarCategoria")]
+        public IActionResult Activate(int id)
+        {
+            try
+            {
+                var result = CategoriaServicios.Activar(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
         #endregion Methods
     }
 }
