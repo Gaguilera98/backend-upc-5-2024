@@ -18,7 +18,7 @@ namespace backend_upc_5_2023.Servicios
         /// <exception cref="System.Data.SqlClient.SqlException"></exception>
         public static IEnumerable<T> Get<T>()
         {
-            const string sql = "SELECT * FROM PRODUCTO WHERE ESTADO_REGISTRO = 11";
+            const string sql = "SELECT * FROM PRODUCTO WHERE ESTADO_REGISTRO = 1";
 
             return DBManager.Instance.GetData<T>(sql);
         }
