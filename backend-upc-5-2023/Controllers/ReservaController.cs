@@ -8,13 +8,13 @@ using System.Data.SqlClient;
 namespace backend_upc_5_2023.Controllers
 {
     /// <summary>
-    /// Servicios web para la entidad: <see cref="Habitaciones"/>
+    /// Servicios web para la entidad: <see cref="Reserva"/>
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [EnableCors("DevelopmentCors")]
     [Route("api/[controller]")]
     [ApiController]
-    public class HabitacionController : ControllerBase
+    public class ReservaController : ControllerBase
     {
         #region Fields
         private readonly IConfiguration _configuration;
@@ -23,10 +23,10 @@ namespace backend_upc_5_2023.Controllers
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="HabitacionController"/> class.
+        /// Initializes a new instance of the <see cref="UsuariosController"/> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
-        public HabitacionController(IConfiguration configuration)
+        public ReservaController(IConfiguration configuration)
         {
             _configuration = configuration;
             connectionString =
@@ -48,7 +48,7 @@ namespace backend_upc_5_2023.Controllers
         {
             try
             {
-                var result = HabitacionesServicios.Get<Habitaciones>();
+                var result = ReservaServicios.Get();
                 return Ok(result);
             }
             catch (Exception ex)
@@ -64,11 +64,11 @@ namespace backend_upc_5_2023.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetById")]
-        public IActionResult GetHabitacionById(int id)
+        public IActionResult GetReservaById(int id)
         {
             try
             {
-                var result = HabitacionesServicios.GetById<Habitaciones>(id);
+                var result = ReservaServicios.GetById<Reserva>(id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -80,15 +80,15 @@ namespace backend_upc_5_2023.Controllers
         /// <summary>
         /// Inserts the specified usuarios.
         /// </summary>
-        /// <param name="usuarios">The usuarios.</param>
+        /// <param name="reserva">The usuarios.</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("AddHabitacion")]
-        public IActionResult Insert(Habitaciones habitaciones)
+        [Route("AddReserva")]
+        public IActionResult Insert(Reserva reserva)
         {
             try
             {
-                var result = HabitacionesServicios.Insert(habitaciones);
+                var result = ReservaServicios.Insert(reserva);
                 return Ok(result);
             }
             catch (Exception ex)
